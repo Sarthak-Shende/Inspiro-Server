@@ -11,9 +11,29 @@ export const getPosts = async (req, res) => {
 	}
 };
 
+export const getPostsBySearch = async (
+	{ query: { searchQuery, tags } },
+	res
+) => {
+	try {
+		const title = new RegExp(searchQuery, "i");
+		const postMessages = await PostMessage.find({
+			$or: [{ title }, { tags: { $in: tags.split(",") } }],
+		});
+
+		res.status(200).json(postMessages);
+	} catch (error) {
+		res.status(404).json({ message: error.message });
+	}
+};
+
 export const createPost = async (req, res) => {
 	const post = req.body;
-	const newPost = new PostMessage(post);
+	const newPost = new PostMessage({
+		...post,
+		creator: req.userId,
+		createdAt: new Date().toISOString(),
+	});
 
 	try {
 		await newPost.save();
@@ -56,7 +76,7 @@ export const deletePost = async ({ params: { id } }, res) => {
 	}
 };
 
-export const likePost = async ({ params: { id, userId } }, res) => {
+export const likePost = async ({ params: { id }, userId }, res) => {
 	try {
 		if (!userId) return res.json({ message: "Unauthenticated." });
 
@@ -73,13 +93,9 @@ export const likePost = async ({ params: { id, userId } }, res) => {
 			post.likes = post.likes.filter((id) => id !== String(userId));
 		}
 
-		const updatedPost = await PostMessage.findOneAndUpdate(
-			{ _id: id },
-			post,
-			{
-				new: true,
-			}
-		);
+		const updatedPost = await PostMessage.findOneAndUpdate({ _id: id }, post, {
+			new: true,
+		});
 		//console.log(updatedPost);
 		res.status(200).json(updatedPost);
 	} catch (error) {
