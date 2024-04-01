@@ -26,22 +26,20 @@ export const getPost = async (req, res) => {
 	const { id } = req.params;
 	try {
 		const postMessage = await PostMessage.findOne({ _id: id });
-
 		res.status(200).json(postMessage);
 	} catch (error) {
 		res.status(404).json({ message: error.message });
 	}
 };
 
-export const getPostsBySearch = async (
-	{ query: { searchQuery, tags } },
-	res
-) => {
+export const getPostsBySearch = async (req, res) => {
 	try {
-		const title = new RegExp(searchQuery, "i");
-		const postMessages = await PostMessage.find({
-			$or: [{ title }, { tags: { $in: tags.split(",") } }],
-		});
+		const { searchQuery, tags } = req.query;
+		const search = new RegExp(searchQuery, "i");
+		const postMessages = await PostMessage.find().or([
+			{ title: search },
+			{ tags: { $in: tags.split(",") } },
+		]);
 
 		res.status(200).json(postMessages);
 	} catch (error) {
@@ -60,7 +58,7 @@ export const createPost = async (req, res) => {
 	try {
 		await newPost.save();
 
-		res.json(newPost);
+		res.status(200).json(newPost);
 	} catch (error) {
 		res.status(409).json({ message: error.message });
 	}
@@ -118,7 +116,25 @@ export const likePost = async ({ params: { id }, userId }, res) => {
 		const updatedPost = await PostMessage.findOneAndUpdate({ _id: id }, post, {
 			new: true,
 		});
-		//console.log(updatedPost);
+
+		res.status(200).json(updatedPost);
+	} catch (error) {
+		res.status(404).json({ message: error.message });
+	}
+};
+
+export const commentPost = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const { value } = req.body;
+
+		const post = await PostMessage.findOne({ _id: id });
+		post.comments.push(value);
+
+		const updatedPost = await PostMessage.findOneAndUpdate({ _id: id }, post, {
+			new: true,
+		});
+
 		res.status(200).json(updatedPost);
 	} catch (error) {
 		res.status(404).json({ message: error.message });

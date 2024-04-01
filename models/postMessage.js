@@ -8,6 +8,7 @@ const postSchema = mongoose.Schema({
 	tags: [String],
 	selectedFile: String, // here we save image converted into srting using base64
 	likes: { type: [String], default: [] },
+	comments: { type: [String], default: [] },
 	createdAt: {
 		type: Date,
 		default: new Date(),
