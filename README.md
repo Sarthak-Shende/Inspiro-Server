@@ -61,20 +61,21 @@ Inspiro is a vibrant online platform designed specifically for creative professi
     </li>
 </ul>
 <br>
-<h2>Landing page</h2>
-<img src="https://i.ibb.co/Sc8N0HW/Landing-Page.gif" alt="Landing page">
+<h2>Live preview of landing page (GIF)</h2>
+<img src="/assets/LandingPage.gif" alt="Landing page">
 <br>
-<h2>Authentication page</h2>
-<img src="https://i.ibb.co/NKjTxwV/Auth.gif" alt="Authentication page">
+<h2>Live preview of authentication page (GIF)</h2>
+<img src="/assets/Auth.gif" alt="Authentication page">
 <br>
-<h2>Post details page</h2>
-<img src="https://i.ibb.co/Wtv5SVW/Product-Details.gif"  alt="Post details page">
+<h2>Live preview of post details page (GIF)</h2>
+<img src="/assets/ProductDetails.gif"  alt="Post details page">
 <br>
-<h2>Post actions</h2>
-<img src="https://i.ibb.co/Fqzt9mT/Post-Actions.gif" alt= "Post actions">
+<h2>Live preview of post actions (GIF)</h2>
+<img src="/assets/PostActions.gif" alt= "Post actions">
 <br>
-<h2>Creating a post</h2>
-<img src="https://i.ibb.co/7yRYQz1/Createpost.gif"  alt="Creating a post">
+<h2>Live preview of creating a post (GIF)</h2>
+<img src="/assets/Createpost.gif"  alt="Creating a post">
 <br>
 <h2>On smartphone</h2>
 <img src="https://i.ibb.co/xYygJ1j/Screenshot-from-2024-04-14-17-36-55.png"  alt="On smartphone">
+
