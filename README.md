@@ -2,8 +2,8 @@
 <h1>Inspiro</h1>
 </div>
 <h2>Introduction</h2>
-<pre><b>Inspire and Be Inspired: Inspiro - The Social Network for Creative Growth</b>
-Inspiro is a vibrant online platform designed specifically for creative professionals. Whether you're a seasoned artist or just starting out, Inspiro offers a space to exhibit your work, receive constructive feedback, find collaborators, and access resources to hone your craft.</pre>
+<p><b>Inspire and Be Inspired: Inspiro - The Social Network for Creative Growth</b><br>
+Inspiro is a vibrant online platform designed specifically for creative professionals. Whether you're a seasoned artist or just starting out, Inspiro offers a space to exhibit your work, receive constructive feedback, find collaborators, and access resources to hone your craft.</p>
 <br>
 <h2><a href=https://github.com/Sarthak-Shende/Inspiro-Client>Front-end repository link</a></h2>
 <br>
